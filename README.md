@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+## Pothole Locations Map
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app will map the location of potholes
 
-## Available Scripts
+### To do
 
-In the project directory, you can run:
+- [ ] Add separate page routes for Login, Home and About (using [react-router](https://reactrouter.com/web/guides/quick-start))
+- [ ] Add login page route (`/login`) with login form that allows user to sign in using email and password combination or by using Google sign-in. Build the form fields using [react-hook-form](https://react-hook-form.com/)
+- [ ] Authenticate the user using Firebase authentication (email/password)
+- [ ] Redirect the user to the `/login` route if they are not logged-in
+- [ ] Restrict the user from viewing the tasks if they are not logged-in (using [react-router](https://reactrouter.com/web/guides/quick-start))
+- [ ] Update userContext with logged in user information
+- [ ] Add Firebase Firestore integration to store the location of potholes
+- [ ] Add new potholes by double-clicking on the map to display a modal which includes a form to add pothole locations. This form built using [react-hook-form](https://react-hook-form.com/) will accept the following user inputs: location of pothole, image of pothole and lat, lng of pothole. The lat,lng coordinates for the pothole will be the same as the location (double) clicked on the map
+- [ ] List location of potholes on map (mapbox-gl)
+- [ ] List information of potholes in a scrollable list in sidebar
+- [ ] Display an 'About' page
 
-### `yarn start`
+### Libraries included
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Firebase
+2. Mapbox-gl v2
+3. Tailwindcss v2
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Pre-requisites
 
-### `yarn test`
+Setup Firebase project and copy config credentials
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Setup Instructions
 
-### `yarn build`
+- Fork or clone the repo
+- Rename `.env.example` to `.env.local`
+- Add your Firebase credentials to the `.env.local` file
+- Add your mapbox API key to the `.env.local` file
+- Install dependencies using `yarn`
+- Run locally using `yarn start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Submission Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Fork the repo
+- Commit changes to your repo using `git add .` and `git commit -m [commit message]`
+- Submit PR to the branch

@@ -25,6 +25,9 @@ const Map = () => {
       maxBounds: bounds,
     });
 
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
+
     map.fitBounds([
       [-59.24930490233564, 13.427986048198505],
       [-59.8920050976494, 12.958016032319861],
@@ -43,11 +46,10 @@ const Map = () => {
   }, []);
 
   return (
-    <div>
-      <div className="sidebar">
+    <div className="h-full w-full" ref={mapContainer}>
+      <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white">
         Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
       </div>
-      <div className="map-container" ref={mapContainer} />
     </div>
   );
 };

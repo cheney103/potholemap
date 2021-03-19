@@ -1,16 +1,20 @@
 import React from "react";
+import Header from "./components/Header";
 import Map from "./components/Map";
 
 function App() {
   return (
-    // <div className="h-full min-h-screen bg-gray-200">
-    <div>
-      {/* <div className="p-10">
-        <button className="bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded">
-          Button
-        </button>
-      </div> */}
-      <Map />
+    <div className="w-full h-screen bg-gray-300">
+      <Header title="Pothole App" />
+
+      <div className="h-full w-full flex bg-red-500">
+        <div className="w-1/6 bg-white">
+          <p>Sidebar</p>
+        </div>
+        <div className="w-5/6 bg-white">
+          <Map />
+        </div>
+      </div>
     </div>
   );
 }

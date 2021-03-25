@@ -1,10 +1,40 @@
+import React from 'react'
+import { useHistory } from 'react-router-dom'
+import { useAuth } from '../auth/Auth';
+
 const Header = ({ title }) => {
+
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+
+  async function handleLogout() {
+
+    try {
+      await logout()
+      history.push("/")
+    } catch (error) {
+      alert(error)
+    }
+
+  } 
+
+  function handleSignIn(){
+    history.push('/login')
+  }
+
+
   return (
-    <nav className="bg-gray-800">
+    <div className='App'>
+      {
+        currentUser ? (
+          <nav className="bg-gray-800">
       <div className="container-xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
+        
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            
             <div className="flex-shrink-0 flex items-center">
+              
               <h1 className="text-white text-2xl font-bold leading-none w-auto">
                 {title}
               </h1>
@@ -28,20 +58,7 @@ const Header = ({ title }) => {
           </div>
           <div className="dropdown relative ml-3">
             <div>
-              <svg
-                className="h-9 w-9 text-gray-200"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1"
-                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
+              <img class="inline object-cover w-12 h-12 mr-2 rounded-full" src={currentUser.photoURL} alt="avatar"/>
             </div>
             <div className="dropdown-menu hidden absolute right-0 shadow-lg z-50">
               <ul className="w-full mt-2 origin-top-right rounded-md md:w-48 bg-white rounded-md shadow text-gray-700">
@@ -55,7 +72,7 @@ const Header = ({ title }) => {
                 <li className="">
                   <a
                     className="w-full text-left rounded-b hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                    href="/signout"
+                    onClick={handleLogout}
                   >
                     Sign Out
                   </a>
@@ -66,6 +83,26 @@ const Header = ({ title }) => {
         </div>
       </div>
     </nav>
+        ) : (
+          <nav className="bg-gray-800">
+      <div className="container-xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-16">
+          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex-shrink-0 flex items-center">
+              <h1 className="text-white text-2xl font-bold leading-none w-auto">
+                {title}
+              </h1>
+            </div>
+          </div>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+          onClick={handleSignIn}>Sign In</button>
+        </div>
+      </div>
+    </nav>
+        )
+      }
+    
+    </div>
   );
 };
 

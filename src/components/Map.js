@@ -115,7 +115,6 @@ const Map = () => {
       <div className="w-full flex-1 flex">
         <div className="w-1/6 bg-white">
           <p>Sidebar</p>
-
         </div>
         <div className="w-5/6">
           <div className="h-full w-full" ref={mapContainer}>

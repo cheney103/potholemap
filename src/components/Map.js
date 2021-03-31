@@ -10,7 +10,6 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 const Map = () => {
   const mapContainer = useRef();
   const [data, setData] = useState([])
-  const [lat, setLat] = useState([])
   let map = null;
 
   const ref = firebase.firestore().collection('issues');

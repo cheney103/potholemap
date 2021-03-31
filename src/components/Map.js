@@ -26,12 +26,18 @@ const Map = () => {
       setData(retrieve)
 
       retrieve.map((point) => {
-        new mapboxgl.Marker()
-          .setPopup(new mapboxgl.Popup().setHTML('<div>' + point.Location + '</div><p>' + point.IssueDesc + '</p>')) // add popup
+        new mapboxgl.Marker({
+        
+        color: "#FF0000",
+       draggable: false
+       })
+          .setPopup(new mapboxgl.Popup().setHTML('<div class="p-2"><div>'
+           + '<div><img src="'+point.ImageFile+'"/></div>'+ '<div class="font-bold text-indigo-900"><p>' 
+           +point.Location + '</p></div>'+point.IssueDesc +'</p></div>')) // add popup
           .setLngLat([point.Longitude, point.Latitude])
           .addTo(map)
       })
-
+      
       return () => ref()
 
     });

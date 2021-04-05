@@ -5,8 +5,6 @@ import PotholeModal from './PotholeModal'
 import { useAuth } from '../auth/Auth'
 import Header from "./Header";
 
-
-
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
 const Map = () => {

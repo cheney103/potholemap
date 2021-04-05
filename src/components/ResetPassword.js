@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup'
 import { useAuth } from '../auth/Auth';
 import { useHistory, Link } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { useHistory, Link } from 'react-router-dom'
 
 let schema = yup.object().shape({
     email: yup.string().required().email(),
-});
+});  
 
 
 function ResetPassword() {

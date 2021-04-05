@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup'
 import { useAuth } from '../auth/Auth';
 import { useHistory, Link } from 'react-router-dom'
@@ -15,7 +15,7 @@ let schema = yup.object().shape({
 
 
 function Login() {
-    const { login, currentUser } = useAuth()
+    const { login, currentUser } = useAuth() 
 
     const history = useHistory()
 
@@ -27,6 +27,7 @@ function Login() {
     );
 
     useEffect(() => {
+        
         if (currentUser) {
             history.push('/')
         }
@@ -40,7 +41,8 @@ function Login() {
         try {
             setLoading(true)
             await login(email, password)
-            history.push("/")
+            //console.log(currentUser)
+            //history.push("/")
         } catch (error) {
             alert(error);
         }

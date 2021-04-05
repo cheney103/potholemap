@@ -1,22 +1,22 @@
 import React from "react";
-import Header from "./components/Header";
 import Map from "./components/Map";
+import Login from "./components/Login";
+import About from "./components/About";
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { AuthProvider } from "./auth/Auth";
+
 
 function App() {
   return (
-    <div className="w-full flex flex-col h-screen bg-gray-300">
-      <Header title="Pothole App" />
-
-      <div className="w-full flex-1 flex">
-        <div className="w-1/6 bg-white">
-          <p>Sidebar</p>
-        </div>
-        <div className="w-5/6">
-          <Map />
-        </div>
-      </div>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Map} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/about" exact component={About} />
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
-
 export default App;

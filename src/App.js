@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { AuthProvider } from "./auth/Auth";
 
 
+
 function App() {
   return (
     <AuthProvider>

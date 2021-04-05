@@ -61,8 +61,14 @@ const Map = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
+        </div>
+      </div>  
+      </div>
+
+    
   );
 };
 

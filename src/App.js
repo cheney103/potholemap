@@ -5,6 +5,7 @@ import About from "./components/About";
 import Signup from "./components/Signup";
 import Error from "./components/Error";
 import ForgotPswd from "./components/ResetPassword"
+
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { AuthProvider } from "./auth/Auth";
 

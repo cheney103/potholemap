@@ -4,7 +4,6 @@ import { useAuth } from '../auth/Auth';
 
 const Header = ({ title }) => {
 
-  console.log(useAuth())
   const { currentUser, logout } = useAuth();
   const history = useHistory();
 

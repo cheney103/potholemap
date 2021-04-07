@@ -1,7 +1,6 @@
 import React from "react";
 import Map from "./components/Map";
 import Login from "./components/Login";
-import Signup from "./components/Signup";
 import About from "./components/About";
 import Error from "./components/Error";
 import ForgotPswd from "./components/ResetPassword"
@@ -24,8 +23,6 @@ function App() {
         </Switch>
       </Router>
     </AuthProvider>
-
   );
 }
-
 export default App;

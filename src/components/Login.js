@@ -7,7 +7,6 @@ import { useHistory, Link } from 'react-router-dom'
 import { auth, google } from '../auth/Firebase';
 
 
-
 let schema = yup.object().shape({
     email: yup.string().required().email(),
     password: yup.string().required().min(5)
@@ -119,6 +118,5 @@ function Login() {
 }
 
 export default Login;
-
 
 

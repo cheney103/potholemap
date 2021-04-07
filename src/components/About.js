@@ -9,7 +9,7 @@ const About = () => {
                 <img className="object-cover h-full w-full" src="https://backroads-web.s3.amazonaws.com/images/trips/2016/slideshows/browser/MYTC-yellowstone-tetons-multisport-tour.jpg" alt="nature" />
             </div>
             <div className="flex items-center justify-center h-screen ">
-                <div class="bg-white rounded-lg border shadow-lg p-10 w-6/12 absolute inset-x-auto bottom-0 h-5/6 ">
+                <div class="bg-white rounded-lg border shadow-lg p-10 w-6/12 absolute inset-x-auto bottom-0 h-5/6 "> 
                     <div>
                         <h1 className="text-4xl  font-bold ">About</h1>
                         <hr className="mt-6 border-b-1 border-gray-200" />

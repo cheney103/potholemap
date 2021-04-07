@@ -99,7 +99,8 @@ const Header = ({ title }) => {
             </div>
           </nav>
         )
-      } 
+      }
+
     </div>
   );
 };

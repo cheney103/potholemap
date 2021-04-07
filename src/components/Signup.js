@@ -117,7 +117,7 @@ function SignUp() {
                                 <button
                                     onClick={googleSignUp}
                                     disabled={loading}
-                                    class="w-full py-3 text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 " type="submit">SignIn with Google</button>
+                                    class="w-full py-3 text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 " type="submit">SignUp with Google</button>
                             </div>
                         </div>
                         <p class="text-center text-sm text-grey-dark mt-4 cursor-default">Already have an account? <Link to='/login'><span class="cursor-pointer text-yellow-600">SignIn Here</span></Link></p>

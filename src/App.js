@@ -3,7 +3,7 @@ import Map from "./components/Map";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import About from "./components/About";
-import Error from "./components/Error";
+import Error from "./components/Error"; 
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { AuthProvider } from "./auth/Auth";
 

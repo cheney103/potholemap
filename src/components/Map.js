@@ -70,43 +70,48 @@ const Map = () => {
 
 
   return (
-    // <>
-    //   {
-    //     currentUser ? (
-    // <div className="h-full w-full" ref={mapContainer} onDoubleClick={openModal}>
-    //   <PotholeModal showModal={showModal} setShowModal={setShowModal} coordLat={latitude} coordLng={longitude} />
-    //   <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white" >
-    //     Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
-    //   </div>
-    // </div>
-    //     ) : (
-    //       <div className="h-full w-full" ref={mapContainer}>
-
-    //         <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white" >
-    //           Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
-    //         </div>
-    //       </div>
-    //     )
-    //   }
-
-    // </>
-    <div className="w-full flex flex-col h-screen bg-gray-300 overflow-hidden">
-      <Header title="Pothole App" />
-
-      <div className="w-full flex-1 flex h-screen" >
-        <div className="w-2/6 bg-white overflow-auto">
-          Sidebar
-        </div>
-        <div className="w-5/6">
-          <div className="h-full w-full" ref={mapContainer} onDoubleClick={openModal}>
-            <PotholeModal showModal={showModal} setShowModal={setShowModal} coordLat={latitude} coordLng={longitude} />
-            <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white" >
-              Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
+    <>
+      {
+        currentUser ? (
+          <div className="w-full flex flex-col h-screen bg-gray-300 overflow-hidden">
+          <Header title="Pothole App" />
+    
+          <div className="w-full flex-1 flex h-screen" >
+            <div className="w-2/6 bg-white overflow-auto">
+              Sidebar
+            </div>
+            <div className="w-5/6">
+              <div className="h-full w-full" ref={mapContainer} onDoubleClick={openModal}>
+                <PotholeModal showModal={showModal} setShowModal={setShowModal} coordLat={latitude} coordLng={longitude} />
+                <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white" >
+                  Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        ) : (
+          <div className="w-full flex flex-col h-screen bg-gray-300 overflow-hidden">
+          <Header title="Pothole App" />
+    
+          <div className="w-full flex-1 flex h-screen" >
+            <div className="w-2/6 bg-white overflow-auto">
+              Sidebar
+            </div>
+            <div className="w-5/6">
+              <div className="h-full w-full" ref={mapContainer}>
+                <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white" >
+                  Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        )
+      }
+
+    </>
+    
 
   );
 };

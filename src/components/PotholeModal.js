@@ -207,4 +207,4 @@ export const Modal = ({ showModal, setShowModal, coordLat, coordLng }) => {
     );
 };
 
-export default Modal;
+export default Modal; 

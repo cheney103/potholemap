@@ -5,7 +5,6 @@ import Header from "../components/Header";
 import firebase from '../auth/Firebase';
 
 
-
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 const Map = () => {
   const mapContainer = useRef();
@@ -49,6 +48,11 @@ const Map = () => {
     lng: 13.193114, //Lat center for Barbados
   });
   const [zoom, setZoom] = useState(9);
+  const [showModal, setShowModal] = useState(false)
+  const [latitude, setLatitude] = useState("")
+  const [longitude, setLongitude] = useState("")
+  // const [coord, setCoord] = useState("")
+
 
   const geolocate = new mapboxgl.GeolocateControl({
     positionOptions: {
@@ -64,6 +68,7 @@ const Map = () => {
     ];
     map = new mapboxgl.Map({
       container: mapContainer.current,
+      // style: "mapbox://styles/mapbox/streets-v11",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [mapCenter.lng, mapCenter.lat],
       zoom: zoom,
@@ -112,25 +117,22 @@ const Map = () => {
   }, []);
 
 
-
   return (
-    <div className="w-full flex flex-col h-screen bg-gray-300">
-      <Header title="Pothole App" />
-
-      <div className="w-full flex-1 flex">
-        <div className="w-1/6 bg-white">
-          <p>Sidebar</p>
-        </div>
-        <div className="w-5/6">
-          <div className="h-full w-full" ref={mapContainer}>
-            <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white">
-              Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
+          <div className="w-full flex flex-col h-screen bg-gray-300 overflow-hidden">
+          <Header title="Pothole App" />
+          <div className="w-full flex-1 flex h-screen" >
+            <div className="w-2/6 bg-white overflow-auto">
+              Sidebar
+            </div>
+            <div className="w-5/6">
+              <div className="h-full w-full" ref={mapContainer}>
+                <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white" >
+                  Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
 
   );
 };

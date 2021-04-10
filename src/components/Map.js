@@ -1,15 +1,48 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import PotholeModal from './PotholeModal'
-import { useAuth } from '../auth/Auth'
-import Header from "./Header";
+import Header from "../components/Header";
+import firebase from '../auth/Firebase';
+
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
-
 const Map = () => {
-  const { currentUser } = useAuth()
   const mapContainer = useRef();
+  const [data, setData] = useState([])
+  let map = null;
+
+  const ref = firebase.firestore().collection('issues');
+
+  useEffect(() => {
+
+    ref.onSnapshot(snapshot => {
+      const retrieve = []
+      snapshot.docs.forEach(doc => {
+
+        retrieve.push({ ...doc.data(), id: doc.id })
+
+      })
+      setData(retrieve)
+
+      retrieve.map((point) => {
+        new mapboxgl.Marker({
+        
+        color: "#FF0000",
+       draggable: false
+       })
+          .setPopup(new mapboxgl.Popup().setHTML('<div class="p-2"><div>'
+           + '<div><img src="'+point.ImageFile+'"/></div>'+ '<div class="font-bold text-indigo-900"><p>' 
+           +point.Location + '</p></div>'+point.IssueDesc +'</p></div>')) // add popup
+          .setLngLat([point.Longitude, point.Latitude])
+          .addTo(map)
+      })
+      
+      return () => ref()
+
+    });
+  }, [])
+
+
   const [mapCenter, setMapCenter] = useState({
     lat: -59.570655, //Lng center for Barbados
     lng: 13.193114, //Lat center for Barbados
@@ -21,12 +54,19 @@ const Map = () => {
   // const [coord, setCoord] = useState("")
 
 
+  const geolocate = new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  });
+
   useEffect(() => {
     var bounds = [
       [-60.27172006347844, 12.729393667108312], // Southwest coordinates
       [-58.86958993652529, 13.655956198937346], // Northeast coordinates
     ];
-    const map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: mapContainer.current,
       // style: "mapbox://styles/mapbox/streets-v11",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -34,6 +74,7 @@ const Map = () => {
       zoom: zoom,
       maxBounds: bounds,
     });
+
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
@@ -43,54 +84,40 @@ const Map = () => {
       [-59.8920050976494, 12.958016032319861],
     ]);
 
-    map.on("move", () => {
+    map.on("move", (e) => {
       setMapCenter({
         lng: map.getCenter().lng.toFixed(4),
         lat: map.getCenter().lat.toFixed(4),
+
       });
       setZoom(map.getZoom().toFixed(2));
     });
 
+    map.addControl(geolocate);
+    // Set an event listener that fires
+    // when a geolocate event occurs.
+    geolocate.on('geolocate', function () {
+      console.log('A geolocate event has occurred.')
+    });
 
     map.on('click', function (e) {
-      setLatitude(e.lngLat.lat)
-      setLongitude(e.lngLat.lng)
+      var features = map.queryRenderedFeatures(e.point, {
+
+      });
+
+      if (!features.length) {
+        return;
+      }
 
     });
+
 
     return () => map.remove();
     //eslint-disable-next-line
   }, []);
 
-  const openModal = () => {
-    setShowModal(prev => !prev)
-
-  }
-
-
 
   return (
-    <>
-      {
-        currentUser ? (
-          <div className="w-full flex flex-col h-screen bg-gray-300 overflow-hidden">
-          <Header title="Pothole App" />
-    
-          <div className="w-full flex-1 flex h-screen" >
-            <div className="w-2/6 bg-white overflow-auto">
-              Sidebar
-            </div>
-            <div className="w-5/6">
-              <div className="h-full w-full" ref={mapContainer} onDoubleClick={openModal}>
-                <PotholeModal showModal={showModal} setShowModal={setShowModal} coordLat={latitude} coordLng={longitude} />
-                <div className="absolute m-5 z-10 rounded bg-gray-800 bg-opacity-80 p-2 text-white" >
-                  Longitude: {mapCenter.lng} | Latitude: {mapCenter.lat} | Zoom: {zoom}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        ) : (
           <div className="w-full flex flex-col h-screen bg-gray-300 overflow-hidden">
           <Header title="Pothole App" />
           <div className="w-full flex-1 flex h-screen" >
@@ -106,11 +133,6 @@ const Map = () => {
             </div>
           </div>
         </div>
-        )
-      }
-
-    </>
-    
 
   );
 };

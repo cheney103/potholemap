@@ -1,8 +1,10 @@
 import React from 'react';
+import Burstpipe from '../images/burstmain.png';
 
 export const LandingPage = () => {
     return (
-        <section className="bg-white p-20">
+        <section className="bg-white p-20" 
+        style={{ backgroundImage: `url(${Burstpipe})` }}>
           <div className="w-full flex flex-col items-center">
             <div className="bg-gradient-to-tl from-purple-500 via-purple-600 to-purple-700 p-4 rounded-xl mb-10 text-4xl tracking-tight font-semibold text-white sm:text-4xl md:text-5xl shadow-2xl">
               <div class="grid grid-rows-2 grid-flow-col gap-1">

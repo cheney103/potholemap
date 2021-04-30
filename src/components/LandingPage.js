@@ -3,7 +3,7 @@ import pipe from '../images/leaky.png';
 
 export const LandingPage = () => {
     return (
-      <section className="bg-white p-24 bg-red-200 h-auto h-full md:h-full" style={{ backgroundImage: `url(${pipe})` }}>
+      <section className="bg-white p-28 bg-red-200 h-auto h-full md:h-full" style={{ backgroundImage: `url(${pipe})` }}>
       <div className="w-full flex flex-col items-center">
       
         <div className="p-2 grid grid-flow-col auto-rows-max text-center mx-auto">

@@ -51,11 +51,11 @@ const Map = () => {
         })
           .setPopup(
             popup = new mapboxgl.Popup().setHTML(
-              '<div class="p-2"><div>' +
+              '<div className="p-2"><div>' +
                 '<div><img src="' +
                 point.ImageFile +
                 '"/></div>' +
-                '<div class="font-bold text-indigo-900"><p>' +
+                '<div className="font-bold text-indigo-900"><p>' +
                 point.Location +
                 "</p></div>" +
                 point.IssueDesc +
@@ -135,11 +135,11 @@ const Map = () => {
     fly.flyTo({ center: [lng, lat], zoom: 15 });
 
     pop.setHTML(
-      '<div class="p-2"><div>' +
+      '<div className="p-2"><div>' +
         '<div><img src="' +
         img +
         '"/></div>' +
-        '<div class="font-bold text-indigo-900"><p>' +
+        '<div className="font-bold text-indigo-900"><p>' +
         locat +
         "</p></div>" +
         desc +

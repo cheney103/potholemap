@@ -65,17 +65,7 @@ const Map = () => {
           .setLngLat([point.Longitude, point.Latitude])
           .addTo(map);
 
-          setpop(popup.setHTML(
-            '<div class="p-2"><div>' +
-              '<div><img src="' +
-              point.ImageFile +
-              '"/></div>' +
-              '<div class="font-bold text-indigo-900"><p>' +
-              point.Location +
-              "</p></div>" +
-              point.IssueDesc +
-              "</p></div>"
-          ))
+          setpop(popup)
       });
 
       return () => ref();
